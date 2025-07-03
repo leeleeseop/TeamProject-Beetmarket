@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.beetmarket.goodsqna.mapper.Goods_QnaMapper">
-
 
 <!-- 댓글(상품 질문답변)리스트 -->
 <select id="list" resultType="com.beetmarket.goodsqna.vo.Goods_QnaVO">
@@ -21,8 +18,7 @@
 	) where rnum between  #{pageObject.startRow} and #{pageObject.endRow}
 </select>
 
-
-
+	
 <!-- 상품 에서 댓글 리스트 페이지 처리를 위한 전체 데이터 개수 가져오기 -->
 <select id="getTotalRow" resultType="Long">
 	select count(*)
@@ -30,8 +26,7 @@
 	where goodsNo = #{goodsNo}
 </select>
 
-
-
+	
 <!-- goodsQna 등록 -->
 <insert id="write">
 	<!-- 먼저 BoardVO의 no에 setter를 이용해서 시퀀스에서 받아온 번호를 세팅해 준다. -->
@@ -43,7 +38,6 @@
 </insert>
 
 
-
 <!-- goodsQna 수정 -->
 <update id="update">
 <![CDATA[
@@ -53,9 +47,7 @@
 ]]>
 </update>
 
-
-
-
+	
 <!-- goodsQna 삭제 : 본인 댓글만 삭제 가능 -->
 <delete id="delete">
 	<![CDATA[
@@ -63,7 +55,6 @@
 	where goodsQNA = #{goodsQNA} and id = #{id}
 	]]>
 </delete>
-
 
 
 <!--  답변등록 -->
@@ -74,14 +65,11 @@
 </update>
 
 
-
 <!-- 답변부분 null -->
 <update id="answerdelete">
 	update goods_qna
 	set answer = null, answerDate = null, status = '답변대기중'
 	where goodsQNA = #{goodsQNA}
 </update>
-
-
-
+	
 </mapper>
